@@ -1,0 +1,11 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore .env files (containing sensitive environment variables)
+.env
+
+# Ignore package-lock.json (useful for npm projects)
+package-lock.json
+
+# Ignore build artifacts (e.g., compiled code, bundled assets)
+build/
