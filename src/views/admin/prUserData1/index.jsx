@@ -10,36 +10,32 @@ import {
   Td,
   Text,
   Button,
-  TableContainer,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { primaryDB } from "config/firebase";
+import { clientDB } from "config/firebase";
 import DetailsModal from "./utils/DetailsModal";
-import { partnerDB } from "config/firebase";
-import PartnerAssignmentDrawer from "./utils/PartnerAssignmentModal";
+// import { partnerDB } from "config/firebase";
 
 function Test() {
-  const [quotations, setQuotations] = useState([]);
+  const [prUsers, setPrUsers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [partners, setPartners] = useState([]);
 
-  const textColor = useColorModeValue("secondaryGray.900", "white");
+//   useEffect(() => {
+//     const fetchClients = async () => {
+//       const clientCollectionRef = collection(clientDB, "prUsers");
+//       const snapshot = await getDocs(clientCollectionRef);
+//       const fetchedClients = snapshot.docs.map((doc) => ({
+//         ...doc.data(),
+//         id: doc.id,
+//       }));
+//       setPartners(fetchedClients);
+//     };
 
-  useEffect(() => {
-    const fetchPartners = async () => {
-      const partnersCollectionRef = collection(partnerDB, "partners");
-      const snapshot = await getDocs(partnersCollectionRef);
-      const fetchedPartners = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setPartners(fetchedPartners);
-    };
-
-    fetchPartners();
-  }, []);
+//     fetchClients();
+//   }, []);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -47,34 +43,20 @@ function Test() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const quotationsCollectionRef = collection(primaryDB, "userQuotations");
-      const snapshot = await getDocs(quotationsCollectionRef);
+      const prUsers = collection(clientDB, "prUsers");
+      const snapshot = await getDocs(prUsers);
       const data = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      setQuotations(data);
+      setPrUsers(data);
     };
-
     fetchData();
   }, []);
+  console.log(prUsers)
   return (
     <div>
       <Box>
-        <TableContainer sx={{bgColor: "#fff", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", padding: "20px 0 20px 0"}}>
-        <Text
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="flexStart"
-          padding="20px 0 20px 20px"
-          color={textColor}
-          fontSize='22px'
-          fontWeight='700'
-          lineHeight='100%'
-        >
-          Test Data
-        </Text>
         <Table variant="simple" colorScheme="teal" size="md" w="full">
           <Thead>
             <Tr>
@@ -82,21 +64,21 @@ function Test() {
               <Th>Budget</Th>
               <Th>Email</Th>
               <Th>Company</Th>
-              <Th>Project Type</Th>
+              <Th>Delivery Time</Th>
               <Th></Th>
               {/* Add more columns as per your data structure */}
             </Tr>
           </Thead>
           <Tbody>
-            {quotations.map((row, index) => (
+            {prUsers.map((row, index) => (
               <Tr key={index}>
                 <Td>
                   {row.firstName} {row.lastName}
                 </Td>
                 <Td>{row.budget}</Td>
                 <Td>{row.email}</Td>
-                <Td>{row.companyName}</Td>
-                <Td>{row.projectType}</Td>
+                <Td>{row.company}</Td>
+                <Td>{row.deliveryTime}</Td>
                 <Td>
                   <Button
                     onClick={() => {
@@ -117,7 +99,6 @@ function Test() {
           onClose={() => setIsModalOpen(false)}
           rowData={selectedRowData}
         />
-        </TableContainer>
       </Box>
     </div>
   );

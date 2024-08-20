@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
-import { partnerFirebaseConfig, primaryFirebaseConfig } from "./firebaseConfig";
+import { partnerFirebaseConfig, primaryFirebaseConfig, clientFirebaseConfig } from "./firebaseConfig";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -37,5 +37,14 @@ const partnerAuth = getAuth(partnerApp);
 const partnerDB = getFirestore(partnerApp);
 
 
+const clientApp = initializeApp(clientFirebaseConfig, "client");
+// const analytics = getAnalytics(app);
+const clientAuth = getAuth(clientApp);
+const clientDB = getFirestore(clientApp);
 
-export { primaryAuth, partnerAuth, primaryDB, partnerDB }
+
+
+
+
+
+export { primaryAuth, partnerAuth, primaryDB, partnerDB, clientAuth, clientDB }

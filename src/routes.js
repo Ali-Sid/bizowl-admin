@@ -30,6 +30,7 @@ import Projects from "views/admin/projects";
 import Dashboard from "views/admin/dashboards";
 import AssignedPartners from "views/admin/assigned";
 import Test from "views/admin/test";
+import PrUserData1 from "views/admin/prUserData1";
 
 const routes = [
   {
@@ -96,6 +97,14 @@ const routes = [
     icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
     component: Test
   },
+  {
+    name: "Test Data 2",
+    layout: "/admin",
+    path: "/test1",
+    icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
+    component: PrUserData1
+  },
+
 
   // {
   //   name: "User Data",

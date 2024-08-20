@@ -19,3 +19,14 @@ export const partnerFirebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_APP_ID2,
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID2,
 };
+
+export const clientFirebaseConfig = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY3,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN3,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID3,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET3,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID3,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID3,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID3,
+};
+
