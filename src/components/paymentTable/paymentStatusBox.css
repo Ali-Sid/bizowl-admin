@@ -1,0 +1,171 @@
+.paymentStatusBox{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 700px;
+}
+
+.table-content{
+    display: flex;
+    width: 100%;
+    height: auto;
+    color: #1B2559;
+}
+
+.table-end{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #D7E9FD;
+    color: #37474F;
+    width: 100%;
+    height: 15%;
+}
+
+.top-heading{
+    color: #263238;
+}
+
+.table-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 15%;
+}
+
+.column-heading{
+    display: flex;
+    height: 15%;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #D7E9FD;
+    justify-content: center;
+    align-items: center;
+}
+.filters{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: auto;
+}
+
+.filter-1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #263238;
+    height: 20px;
+    width: 30px;
+    font-size: 12px;
+    color: #455A64;
+    font-weight: 400;
+    margin-right: 5px;
+    border-radius: 15px;
+}
+
+.filter-1 img{
+    height: 6px;
+    width: 8px;
+}
+
+.filter-2{
+    display: flex;
+    font-size: 12px;
+    height: 25px;
+    color: #455A64;
+    font-weight: 400;
+    border-radius: 10px;
+    background-color: #D7E9FD;
+}
+
+.filter2-1{
+    display: flex;
+    align-items: center;
+    width: 120px;
+    justify-content: space-around;
+    border-right: 1px solid #455A64;
+}
+
+.table_icon1{
+    height: 15px;
+    width: 20px;
+}
+
+.filter-date{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-around;
+}
+
+.Cell{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.cell-icon{
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+
+
+.tableBtn{
+    display: flex;
+    align-items: center;
+    height: auto;
+    padding: 5px 1px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 12%;
+    justify-content: center;
+    background-color: #D7E9FD;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table tr th{
+    background-color: #D7E9FD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+
+table tr td:nth-child(3){
+    color: rgb(120, 120, 122);
+}
+
+table tr td{
+    font-size: 14px;
+}
+
+td,th{
+    padding: 0.5rem;
+    border-collapse: collapse;
+}
+
+.Success{
+    color: #057324;
+}
+
+.Failure{
+    color: #FF0707;
+}
+
+.dropdown_arrow{
+    height: 12px;
+    width: 18px;
+}
