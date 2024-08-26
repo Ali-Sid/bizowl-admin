@@ -2,11 +2,12 @@ import React from "react";
 import logo from "assets/img/layout/logo.png"
 
 // Chakra imports
-import { Flex, useColorModeValue } from "@chakra-ui/react";
+import { Button, Flex, Link, useColorModeValue } from "@chakra-ui/react";
 
 // Custom components
 // import { HorizonLogo } from "components/icons/Icons";
 import { HSeparator } from "components/separator/Separator";
+import Logout from "Auth/util/Logout";
 
 export function SidebarBrand() {
   //   Chakra color mode

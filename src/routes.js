@@ -31,6 +31,8 @@ import Dashboard from "views/admin/dashboards";
 import AssignedPartners from "views/admin/assigned";
 import Test from "views/admin/test";
 import PrUserData1 from "views/admin/prUserData1";
+import Login from "Auth/Login";
+import Logout from "Auth/util/Logout";
 
 const routes = [
   {
@@ -69,6 +71,13 @@ const routes = [
     component: NFTMarketplace,
     secondary: true,
   },
+  // {
+  //   name: "PR Service Requests",
+  //   layout: "/admin",
+  //   path: "/test1",
+  //   icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
+  //   component: PrUserData1
+  // },
   {
     name: "Users",
     layout: "/admin",
@@ -96,13 +105,6 @@ const routes = [
     path: "/test",
     icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
     component: Test
-  },
-  {
-    name: "Test Data 2",
-    layout: "/admin",
-    path: "/test1",
-    icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
-    component: PrUserData1
   },
 
 

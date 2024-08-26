@@ -25,11 +25,11 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
 
 const signInSchema = Yup.object({
-  email: Yup.string()
-    .required("Email is Required")
+  username: Yup.string()
+    .required("Username is Required")
     .matches(
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
-      "Invalid email address"
+      /^[a-zA-Z0-9._-]+$/,
+      "Invalid username"
     ),
   password: Yup.string()
     .required("Password is Required")
@@ -52,8 +52,8 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         primaryAuth,
-        values.email,
-        values.password
+        `${formik.values.username}@bizzowl.com`,
+        formik.values.password
       );
       const user = userCredential.user;
       console.log("User logged in:", user);
@@ -75,7 +75,7 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     validationSchema: signInSchema,
@@ -114,7 +114,7 @@ const Login = () => {
             fontWeight="400"
             fontSize="md"
           >
-            Enter your email and password to sign in!
+            Enter your username and password to sign in!
           </Text>
         </Box>
         <Flex
@@ -129,7 +129,7 @@ const Login = () => {
           mb={{ base: "20px", md: "auto" }}
         >
           <form onSubmit={formik.handleSubmit}>
-            <FormControl  isInvalid={!!formik.errors.email && formik.touched.email}>
+            <FormControl  isInvalid={!!formik.errors.username && formik.touched.username}>
               <FormLabel
                 display="flex"
                 ms="4px"
@@ -138,24 +138,24 @@ const Login = () => {
                 color={textColor}
                 mb="8px"
               >
-                Email<Text color={brandStars}>*</Text>
+                Username<Text color={brandStars}>*</Text>
               </FormLabel>
               <Input
                 // isRequired={true}
                 onChange={formik.handleChange}
                 variant="auth"
-                name="email"
+                name="username"
                 fontSize="sm"
                 ms={{ base: "0px", md: "0px" }}
                 type="text"
-                value={formik.values.email}
-                placeholder="hello@email.com"
+                value={formik.values.username}
+                placeholder="admin"
                 mb="24px"
                 fontWeight="500"
                 size="lg"
                 // style={{ marginBottom: '0.2rem' }}
               />
-               <FormErrorMessage style={{margin:'0.2rem',paddingLeft:'0.2rem'}}>{formik.errors.email}</FormErrorMessage>
+               <FormErrorMessage style={{margin:'0.2rem',paddingLeft:'0.2rem'}}>{formik.errors.username}</FormErrorMessage>
               {/* {(formik.errors.email) && (
                 <Text color="red" style={{ paddingLeft: '0.2rem', margin: '0.2rem' }}>{formik.errors.email}</Text>
               )} */}
