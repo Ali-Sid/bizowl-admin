@@ -58,12 +58,16 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
 
   const fetchData = async () => {
     const prUsers = collection(clientDB, "prUsers");
-    const snapshot = await getDocs(prUsers);
-    const data = snapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    setPrServiceRequests(data);
+    const unsubscribe = onSnapshot(prUsers, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setPrServiceRequests(data);
+    });
+    return () => {
+      unsubscribe();
+    };
   };
 
   useEffect(() => {

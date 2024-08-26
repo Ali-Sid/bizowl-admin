@@ -71,13 +71,13 @@ const routes = [
     component: NFTMarketplace,
     secondary: true,
   },
-  {
-    name: "PR Service Requests",
-    layout: "/admin",
-    path: "/test1",
-    icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
-    component: PrUserData1
-  },
+  // {
+  //   name: "PR Service Requests",
+  //   layout: "/admin",
+  //   path: "/test1",
+  //   icon: (<Icon as={MdFormatQuote} width='20px' height='20px' color='inherit' />),
+  //   component: PrUserData1
+  // },
   {
     name: "Users",
     layout: "/admin",
