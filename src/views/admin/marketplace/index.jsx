@@ -21,8 +21,8 @@ import Card from "components/card/Card.js";
 import AdminServiceRequestTable from "./ServiceRequestComponents/AdminServiceRequestTable";
 import QuotationUpdateModal from "./ServiceRequestComponents/QuotationUpdateModal";
 import ServiceRequests from "./ServiceRequestComponents/AdminServiceRequestTable";
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
-import { db } from 'config/firebase';
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { db } from "config/firebase";
 
 // Assets
 import webdev from "assets/img/nfts/webdev.jpg";
@@ -43,6 +43,7 @@ import Avatar3 from "assets/img/avatars/avatar3.png";
 import Avatar4 from "assets/img/avatars/avatar4.png";
 import tableDataTopCreators from "views/admin/marketplace/variables/tableDataTopCreators.json";
 import { tableColumnsTopCreators } from "views/admin/marketplace/variables/tableColumnsTopCreators";
+import Test from "../prUserData1";
 
 export default function Marketplace() {
   // Chakra Color Mode
@@ -50,7 +51,7 @@ export default function Marketplace() {
   const textColorBrand = useColorModeValue("brand.500", "white");
 
   return (
-    <Box pt={{ base: "180px", md: "80px", xl: "80px" }}>
+    <Box>
       {/* Main Fields */}
       <ServiceRequests />
     </Box>

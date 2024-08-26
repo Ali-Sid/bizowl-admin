@@ -9,6 +9,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import theme from 'theme/theme';
 import { ThemeEditorProvider } from '@hypertheme-editor/chakra-ui';
 import Login from 'Auth/Login';
+import PrivateRoute from 'components/PrivateRoute';
 
 ReactDOM.render(
 	<ChakraProvider theme={theme}>
@@ -17,10 +18,10 @@ ReactDOM.render(
 				{/* <HashRouter> */}
 					<Router>
 					<Switch>
-						{/*<Route path='/login' component={Login} />*/}
-						<Route path={`/auth`} component={AuthLayout} />
-						<Route path={`/admin`} component={AdminLayout} />
-						<Route path={`/rtl`} component={RtlLayout} />
+						<Route path='/login' component={Login} />
+						<PrivateRoute path={`/auth`} component={AuthLayout} />
+						<PrivateRoute path={`/admin`} component={AdminLayout} />
+						<PrivateRoute path={`/rtl`} component={RtlLayout} />
 						{/*<Redirect from='/' to='/login' />*/}
 						 <Redirect from='/' to='/admin' />
 					</Switch>

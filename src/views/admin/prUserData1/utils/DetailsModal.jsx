@@ -45,34 +45,62 @@ import {
           <ModalHeader>Details</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* Display detailed information about the row */}
-            <Text>
-              <b>Budget:</b> {rowData.budget}
-            </Text>
-            <Text>
-              <b>Geo Target:</b> {rowData.geoTarget}
-            </Text>
-            <Text>
-              <b>Industry:</b> {rowData.industry}
-            </Text>
-            <Text>
-              <b>Language:</b> {rowData.language}
-            </Text>
-            <Text>
-              <b>Phone:</b> {rowData.phone}
-            </Text>
-            <Text>
-              <b>Press Re;ease:</b> {rowData.pressReleasePurpose}
-            </Text>
-            <Text>
-              <b>Requirements:</b> {rowData.requirements}
-            </Text>
-            <Text>
-              <b>Start Date:</b> {rowData.startDate}
-            </Text>
-            <Text>
-              <b>Timeline:</b> {rowData.timeLine}
-            </Text>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                  width: "50%",
+                }}
+              >
+                <Text style={{ fontWeight: "bold" }}>Budget</Text>
+                <Text style={{ fontWeight: "bold" }}>Geo Target</Text>
+                <Text style={{ fontWeight: "bold" }}>Industry</Text>
+                <Text style={{ fontWeight: "bold" }}>Language</Text>
+                <Text style={{ fontWeight: "bold" }}>Phone</Text>
+                <Text style={{ fontWeight: "bold" }}>Press Release</Text>
+                <Text style={{ fontWeight: "bold" }}>Requirements</Text>
+                <Text style={{ fontWeight: "bold" }}>Start Date</Text>
+                <Text style={{ fontWeight: "bold" }}>Timeline</Text>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                  width: "50%",
+                }}
+              >
+                <Text>{rowData.budget}</Text>
+                <Text>{rowData.geoTarget}</Text>
+                <Text>{rowData.industry}</Text>
+                <Text>{rowData.language}</Text>
+                <Text>{rowData.phone}</Text>
+                <Text>{rowData.pressReleasePurpose}</Text>
+                <Text>{rowData.requirements}</Text>
+                <Text>{rowData.startDate}</Text>
+                <Text>{rowData.timeLine}</Text>
+              </div>
+            </div>
+            <div style={{ paddingTop: "20px" }}>
+              <Button
+                colorScheme="blue"
+                mt={4}
+                // onClick={handleNotifyPartner}
+                // disabled={details?.original?.status == "Notified"}
+              >
+                {/* {details?.original?.status == "Notified"
+                  ? "Notified"
+                  : "Notify Partner"} */}
+                  Notify Partner
+              </Button>
+              <Button colorScheme="green" mt={4} ml={4}>
+                Update Client
+              </Button>
+            </div>
+          </div>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={toggleDrawer}>
