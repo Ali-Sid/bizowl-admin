@@ -239,15 +239,6 @@ const Projects = () => {
           </TabPanels>
         </Tabs>
       </Flex>
-      <Flex
-        mt="2rem"
-        backgroundColor="#FFFFFF"
-        minHeight="15rem"
-        borderRadius="2rem"
-        boxShadow="0px 4px 38px 0px #407BFF26"
-      >
-        <PaymentStatusBox />
-      </Flex>
     </div>
   );
 };

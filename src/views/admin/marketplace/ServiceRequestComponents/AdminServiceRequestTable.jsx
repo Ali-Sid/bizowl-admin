@@ -147,13 +147,20 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
     {
       Header: "CREATED-AT",
       accessor: (rowData) => {
-        const timestamp = rowData.createdAt;
-        if (timestamp) {
-          const date = new Date(timestamp.seconds * 1000);
-          return date.toLocaleString();
+        if (rowData.timestamp) {
+          const date = rowData.timestamp.toDate();
+          const formattedDate = date.toLocaleString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          });
+          return formattedDate;
+        } else {
+          return <></>;
         }
-
-        return getCurrentDateWithoutSeconds();
       },
     },
     {
@@ -165,7 +172,7 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
   const prColumns = [
     {
       Header: "NAME",
-      accessor: (rowData) => `${rowData.firstName} ${rowData.lastName}`,
+      accessor: (rowData) => `${rowData.fullName || rowData.firstName}`,
     },
     {
       Header: "PHONE",
@@ -188,6 +195,25 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
       accessor: (rowData) => rowData.status || "Pending", // Custom accessor function
     },
     {
+      Header: "CREATED-AT",
+      accessor: (rowData) => {
+        if (rowData.timestamp) {
+          const date = rowData.timestamp.toDate();
+          const formattedDate = date.toLocaleString("en-US", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          });
+          return formattedDate;
+        } else {
+          return <></>;
+        }
+      },
+    },
+    {
       Header: "ACTION",
       accessor: "action",
     },
@@ -203,8 +229,8 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
             <ComplexTable columnsData={columns} tableData={serviceRequests} />
-            {/* <ComplexTable columnsData={prColumns} tableData={prServiceRequests} /> */}
-            <Test />
+            <ComplexTable columnsData={prColumns} tableData={prServiceRequests} />
+            {/* <Test /> */}
           </div>
         )}
       </Flex>

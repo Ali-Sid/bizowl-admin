@@ -17,7 +17,7 @@ import { primaryDB } from "config/firebase";
 import { clientDB } from "config/firebase";
 import DetailsModal from "./utils/DetailsModal";
 // import { partnerDB } from "config/firebase";
-import "../../../assets/css/App.css"
+import "../../../assets/css/App.css";
 
 function Test() {
   const [prUsers, setPrUsers] = useState([]);
@@ -72,18 +72,24 @@ function Test() {
   }, []);
   console.log(prUsers);
   return (
-    <div style={{overflow: "auto", maxHeight: "600px"}}>
+    <div style={{ overflow: "auto", maxHeight: "600px" }}>
       <Box sx={{ bgColor: "#fff", borderRadius: "20px" }}>
-      <Flex px='25px' justify='space-between' mb='10px' pt='20px' align='center'>
-        <Text
-          color={textColor}
-          fontSize='22px'
-          fontWeight='700'
-          lineHeight='100%'
+        <Flex
+          px="25px"
+          justify="space-between"
+          mb="10px"
+          pt="20px"
+          align="center"
         >
-          PR Service Requests
-        </Text>
-      </Flex>
+          <Text
+            color={textColor}
+            fontSize="22px"
+            fontWeight="700"
+            lineHeight="100%"
+          >
+            PR Service Requests
+          </Text>
+        </Flex>
         <Table variant="simple" colorScheme="teal" size="md" w="full">
           <Thead>
             <Tr>
@@ -106,7 +112,18 @@ function Test() {
                 <Td>{row.email}</Td>
                 <Td>{row.company}</Td>
                 <Td>{row.deliveryTime}</Td>
-                <Td>{getCurrentDateWithoutSeconds()}</Td>
+                {row.timestamp ? (
+                  <Td>
+                    {row.timestamp.toDate().toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
+                  </Td>
+                ) : <Td></Td>}
                 <Td>
                   <Button
                     onClick={() => {
@@ -117,7 +134,6 @@ function Test() {
                     View Details
                   </Button>
                 </Td>
-                {/* Render other fields as per your data structure */}
               </Tr>
             ))}
           </Tbody>
