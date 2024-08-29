@@ -33,6 +33,7 @@ import Test from "views/admin/test";
 import PrUserData1 from "views/admin/prUserData1";
 import Login from "Auth/Login";
 import Logout from "Auth/util/Logout";
+import PaymentStatusBox from "components/paymentTable/paymentStatusBox";
 
 const routes = [
   {
@@ -48,6 +49,13 @@ const routes = [
     path: "/projects",
     icon: <Icon as={GoProject} width='20px' height='20px' color='inherit' />,
     component: Projects,
+  },
+  {
+    name: "Payments",
+    layout: "/admin",
+    path: "/payment",
+    icon: <Icon as={GoProject} width='20px' height='20px' color='inherit' />,
+    component: PaymentStatusBox,
   },
   {
     name: "Assigned Partners",
