@@ -59,11 +59,24 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
   const fetchData = async () => {
     const prUsers = collection(clientDB, "prUsers");
     const unsubscribe = onSnapshot(prUsers, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
+      const data = snapshot.docs.map((doc, index) => ({
+        srNo: index + 1,
         ...doc.data(),
         id: doc.id,
       }));
-      setPrServiceRequests(data);
+
+      // Sort PR Service Requests by timestamp
+      const sortedPrServiceRequests = data.sort((a, b) => {
+        if (b.id > a.id) {
+          return 1;
+        } else if (b.id < a.id) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      
+      setPrServiceRequests(sortedPrServiceRequests);
     });
     return () => {
       unsubscribe();
@@ -118,7 +131,7 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
   const columns = [
     {
       Header: "SRNO",
-      accessor: "srNo",
+      accessor: (row, index) => index + 1,
     },
     {
       Header: "Name",
@@ -140,15 +153,15 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
       Header: "BUDGET",
       accessor: "budget",
     },
-    {
-      Header: "STATUS",
-      accessor: (rowData) => rowData.status || "Pending", // Custom accessor function
-    },
+    // {
+    //   Header: "STATUS",
+    //   accessor: (rowData) => rowData.status || "Pending", // Custom accessor function
+    // },
     {
       Header: "CREATED-AT",
       accessor: (rowData) => {
-        if (rowData.timestamp) {
-          const date = rowData.timestamp.toDate();
+        if (rowData.createdAt) {
+          const date = rowData.createdAt.toDate();
           const formattedDate = date.toLocaleString("en-US", {
             year: "numeric",
             month: "2-digit",
@@ -162,6 +175,11 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
           return <></>;
         }
       },
+      // sortType: (a, b) => {
+      //   const dateA = new Date(a.timestamp);
+      //   const dateB = new Date(b.timestamp);
+      //   return dateA - dateB;
+      // },
     },
     {
       Header: "ACTION",
@@ -170,6 +188,10 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
   ];
 
   const prColumns = [
+    {
+      Header: "SRNO",
+      accessor: (row, index) => index + 1,
+    },
     {
       Header: "NAME",
       accessor: (rowData) => `${rowData.fullName || rowData.firstName}`,
@@ -188,17 +210,17 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
     },
     {
       Header: "BUDGET",
-      accessor: "budget",
+      accessor: (row) => `${row.priceRange[0]}-${row.priceRange[1]}`,
     },
-    {
-      Header: "STATUS",
-      accessor: (rowData) => rowData.status || "Pending", // Custom accessor function
-    },
+    // {
+    //   Header: "STATUS",
+    //   accessor: (rowData) => rowData.status || "Pending", // Custom accessor function
+    // },
     {
       Header: "CREATED-AT",
       accessor: (rowData) => {
-        if (rowData.timestamp) {
-          const date = rowData.timestamp.toDate();
+        if (rowData.createdAt) {
+          const date = rowData.createdAt.toDate();
           const formattedDate = date.toLocaleString("en-US", {
             year: "numeric",
             month: "2-digit",
@@ -212,6 +234,11 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
           return <></>;
         }
       },
+      // sortType: (a, b) => {
+      //   const dateA = new Date(a.timestamp);
+      //   const dateB = new Date(b.timestamp);
+      //   return dateA - dateB;
+      // },
     },
     {
       Header: "ACTION",
@@ -228,8 +255,16 @@ const ServiceRequests = ({ serviceRequests: propServiceRequests }) => {
           <div
             style={{ display: "flex", flexDirection: "column", gap: "20px" }}
           >
-            <ComplexTable columnsData={columns} tableData={serviceRequests} />
-            <ComplexTable columnsData={prColumns} tableData={prServiceRequests} />
+            <ComplexTable
+              tableName={"Service Requests"}
+              columnsData={columns}
+              tableData={serviceRequests}
+            />
+            <ComplexTable
+              tableName={"PR Service Requests"}
+              columnsData={prColumns}
+              tableData={prServiceRequests}
+            />
             {/* <Test /> */}
           </div>
         )}
